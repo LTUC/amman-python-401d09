@@ -71,12 +71,3 @@ class BST(Tree):
     # else:
         # return _walk(root)
 
-    # if the root equal to the value
-        # return True
-    # if the value < root
-        # if there is left:
-            # return _walk(root.left)
-        # else:
-            # return False
-    # else
-        # return _walk(root.right)
