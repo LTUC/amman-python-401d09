@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Things</h1>
+{% for thing in things %}
+    <h3><a href = "{% url 'thing_detail' thing.id %}">{{ thing.name }}</a></h3>
+{% endfor %}
+{% endblock content %}
