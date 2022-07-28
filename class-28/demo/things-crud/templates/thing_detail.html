@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> {{ thing.name }}</h1>
+<h3>{{ thing.rank }}</h3>
+<h3>{{ thing.reviewer }}</h3>
+<a href="{% url 'thing_update' thing.pk %}">Update</a>
+<a href="{% url 'thing_delete' thing.pk %}">Delete</a>
+{% endblock content %}
