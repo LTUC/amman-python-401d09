@@ -1,25 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Suspense, Profiler } from 'react';
+import { Routes, Route } from "react-router-dom";
+
+import Header from './components/Header';
+// import Form from './components/Form'; // this is wohout lazy loading
+const Form = React.lazy(() => import('./components/Form'));
+
 
 function App() {
+
+  console.log("App is rendering");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Routes>
+        <Route path="/" element={<Header />} />
+        <Route path="form" element={
+          <Suspense>
+            <Form />
+          </Suspense>
+        } />
+      </Routes>
+
+
+      <p>Reviewing React</p>
+
+      <Profiler
+        id="formProfiler"
+        onRender={(id, phase, time) => {
+          console.log(id, phase, time)
+        }}
+      >
+
+      </Profiler>
+    </>
+  )
 }
 
 export default App;
